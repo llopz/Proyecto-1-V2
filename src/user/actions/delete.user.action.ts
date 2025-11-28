@@ -6,7 +6,7 @@ async function deleteUserAction(id: string): Promise<UserType | null> {
     id,
     { enabled: false },
     { new: true }
-  );
+  ).select("-password");
 }
 
 export { deleteUserAction };

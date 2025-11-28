@@ -1,4 +1,5 @@
 import { Router, Request, Response } from "express";
+import { requireAuth } from "../security/middlewares/requireAuth";
 import {
   getUsersController,
   getUserByIdController,
@@ -29,14 +30,14 @@ userRoutes.post("/", async (req: Request, res: Response) => {
 });
 
 // UPDATE USER
-userRoutes.put("/:id", async (req: Request, res: Response) => {
+userRoutes.put("/:id", requireAuth, async (req: Request, res: Response) => {
   const updated = await updateUserController(req.params.id, req.body);
   if (!updated) return res.status(404).json({ error: "User not found" });
   res.status(200).json(updated);
 });
 
 // SOFT DELETE USER
-userRoutes.delete("/:id", async (req: Request, res: Response) => {
+userRoutes.delete("/:id", requireAuth, async (req: Request, res: Response) => {
   const deleted = await deleteUserController(req.params.id);
   if (!deleted) return res.status(404).json({ error: "User not found" });
   res.status(200).json({ message: "User disabled", user: deleted });

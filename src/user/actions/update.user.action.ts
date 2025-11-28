@@ -5,7 +5,9 @@ async function updateUserAction(
   id: string,
   userData: Partial<UserType>
 ): Promise<UserType | null> {
-  return await UserModel.findByIdAndUpdate(id, userData, { new: true });
+  return await UserModel.findByIdAndUpdate(id, userData, { new: true }).select(
+    "-password"
+  );
 }
 
 export { updateUserAction };

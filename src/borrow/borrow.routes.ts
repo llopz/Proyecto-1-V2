@@ -1,4 +1,6 @@
 import { Router, Request, Response } from "express";
+import { requireAuth } from "../security/middlewares/requireAuth";
+import { requirePermission } from "../security/middlewares/requirePermission";
 import {
   createReservaController,
   entregarLibroController,
@@ -9,7 +11,7 @@ import {
 
 const reservaRoutes = Router();
 
-reservaRoutes.post("/", async (req: Request, res: Response) => {
+reservaRoutes.post("/", requireAuth, async (req: Request, res: Response) => {
   const { usuarioId, libroId } = req.body;
 
   const reserva = await createReservaController(usuarioId, libroId);
@@ -17,25 +19,38 @@ reservaRoutes.post("/", async (req: Request, res: Response) => {
   res.status(201).json(reserva);
 });
 
-reservaRoutes.put("/entregar/:id", async (req: Request, res: Response) => {
-  const reserva = await entregarLibroController(req.params.id);
+reservaRoutes.put(
+  "/entregar/:id",
+  requireAuth,
+  async (req: Request, res: Response) => {
+    const reserva = await entregarLibroController(req.params.id);
 
-  if (!reserva) return res.status(404).json({ error: "Reserva no encontrada" });
+    if (!reserva)
+      return res.status(404).json({ error: "Reserva no encontrada" });
 
-  res.status(200).json(reserva);
-});
+    res.status(200).json(reserva);
+  }
+);
 
-reservaRoutes.get("/libro/:id", async (req: Request, res: Response) => {
-  const historial = await historialLibroController(req.params.id);
-  res.status(200).json(historial);
-});
+reservaRoutes.get(
+  "/libro/:id",
+  requireAuth,
+  async (req: Request, res: Response) => {
+    const historial = await historialLibroController(req.params.id);
+    res.status(200).json(historial);
+  }
+);
 
-reservaRoutes.get("/usuario/:id", async (req: Request, res: Response) => {
-  const historial = await historialUsuarioController(req.params.id);
-  res.status(200).json(historial);
-});
+reservaRoutes.get(
+  "/usuario/:id",
+  requireAuth,
+  async (req: Request, res: Response) => {
+    const historial = await historialUsuarioController(req.params.id);
+    res.status(200).json(historial);
+  }
+);
 
-reservaRoutes.get("/", async (req: Request, res: Response) => {
+reservaRoutes.get("/", requireAuth, async (req: Request, res: Response) => {
   const reservas = await getReservasController();
   res.status(200).json(reservas);
 });

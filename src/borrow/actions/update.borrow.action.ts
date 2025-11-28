@@ -9,7 +9,7 @@ async function entregarLibroAction(
     reservaId,
     { fechaEntrega: new Date() },
     { new: true }
-  );
+  ).select("-__v");
 
   if (reserva) {
     // marcar libro como disponible
