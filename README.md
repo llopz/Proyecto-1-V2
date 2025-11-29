@@ -7,32 +7,24 @@ asignación de permisos y control de acceso.
 
 ## Tecnologías Utilizadas
 
--   Node.js
--   Express.js
--   MongoDB + Mongoose
--   TypeScript
--   JWT (jsonwebtoken)
--   argon2
--   dotenv
+- Node.js
+- Express.js
+- MongoDB + Mongoose
+- TypeScript
+- JWT (jsonwebtoken)
+- argon2
+- dotenv
 
 ## Estructura del Proyecto
 
+    core/
+     │── database.ts
     src/
-     ├── core/
-     │    ├── database.ts
-     │    ├── middlewares/
-     │    │       ├── authMiddleware.ts
-     │    │       ├── requirePermission.ts
-     │    │       ├── canModifyUser.ts
-     │    │       └── canDisableUser.ts
-     │
-     ├── modules/
-     │    ├── user/
-     │    ├── book/
-     │    ├── borrow/
-     │    ├── permissions/
-     │
-     ├── app.ts
+     |
+     │── user/
+     │── book/
+     │── borrow/
+     │── security/
      └── server.ts
 
 ## Sistema de Permisos
@@ -53,10 +45,10 @@ Debe crearse inicialmente la siguiente lista de permisos:
 
 ## Middlewares principales
 
--   authMiddleware
--   requirePermission()
--   canModifyUser
--   canDisableUser
+- authMiddleware
+- requirePermission()
+- canModifyUser
+- canDisableUser
 
 ## Variables de entorno
 
