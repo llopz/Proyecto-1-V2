@@ -17,6 +17,7 @@ asignación de permisos y control de acceso.
 
 ## Estructura del Proyecto
 
+```
 Proyecto-1-V2/
 │
 ├── core/
@@ -26,12 +27,12 @@ Proyecto-1-V2/
 │ ├── user/ # Módulo de usuarios
 │ │ ├── actions/
 │ │ │ ├── create.user.action.ts
-│ │ │ ├── read.user.action.ts  
-│ │ │ ├── update.user.action.ts  
-│ │ │ └── delete.user.action.ts  
-│ │ ├── user.model.ts  
-│ │ ├── user.controller.ts  
-│ │ └── user.routes.ts  
+│ │ │ ├── read.user.action.ts
+│ │ │ ├── update.user.action.ts
+│ │ │ └── delete.user.action.ts
+│ │ ├── user.model.ts
+│ │ ├── user.controller.ts
+│ │ └── user.routes.ts
 │ │
 │ ├── book/ # Módulo de libros
 │ │ ├── actions/
@@ -77,6 +78,7 @@ Proyecto-1-V2/
 ├── package.json
 ├── tsconfig.json
 └── README.md
+```
 
 ## Sistema de Permisos
 
