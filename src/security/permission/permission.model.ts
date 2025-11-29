@@ -3,7 +3,7 @@ import { Schema, model } from "mongoose";
 export type PermissionType = {
   name: string;
   description?: string;
-  deleted?: boolean;
+  deleted: boolean;
 };
 
 const PermissionSchema = new Schema<PermissionType>({

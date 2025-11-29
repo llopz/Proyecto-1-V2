@@ -1,6 +1,10 @@
 import { createUserAction } from "./actions/create.user.action";
 import { getUsersAction, getUserByIdAction } from "./actions/read.user.action";
-import { updateUserAction } from "./actions/update.user.action";
+import {
+  updateUserAction,
+  removePermissionAction,
+  assignPermissionAction,
+} from "./actions/update.user.action";
 import { deleteUserAction } from "./actions/delete.user.action";
 
 async function getUsersController() {
@@ -23,10 +27,20 @@ async function deleteUserController(id: string) {
   return await deleteUserAction(id);
 }
 
+async function assignPermission(id: string, permission: string) {
+  return await assignPermissionAction(id, permission);
+}
+
+async function removePermission(id: string, permission: string) {
+  return await removePermissionAction(id, permission);
+}
+
 export {
   getUsersController,
   getUserByIdController,
   createUserController,
   updateUserController,
   deleteUserController,
+  assignPermission,
+  removePermission,
 };

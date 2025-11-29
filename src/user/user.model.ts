@@ -5,7 +5,7 @@ export type UserType = {
   lastName?: string;
   email: string;
   password: string;
-  permissions: string[];
+  permissions: Schema.Types.ObjectId[];
   enabled: boolean;
 };
 
@@ -14,7 +14,9 @@ const UserSchema = new Schema<UserType>({
   lastName: { type: String },
   email: { type: String, required: true, unique: true, lowercase: true },
   password: { type: String, required: true },
-  permissions: { type: [String], default: [] },
+  permissions: [
+    { type: Schema.Types.ObjectId, ref: "Permission", default: [] },
+  ],
   enabled: { type: Boolean, default: true },
 });
 

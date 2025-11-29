@@ -5,9 +5,10 @@ import {
   getLibrosAction,
   getLibroByIdAction,
 } from "./actions/read.book.action";
+import { query } from "express";
 
-async function getLibrosController() {
-  return await getLibrosAction();
+async function getLibrosController(query: any) {
+  return await getLibrosAction(query);
 }
 
 async function getLibroByIdController(id: string) {
