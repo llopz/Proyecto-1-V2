@@ -1,56 +1,71 @@
-# Proyecto-1-V2
+# Proyecto Biblioteca -- Backend (Node + Express + MongoDB)
 
-# Dependencias
+Este proyecto implementa el backend de un sistema para la gestión de una
+biblioteca universitaria.\
+Incluye manejo de usuarios, libros, reservas, autenticación con JWT,
+asignación de permisos y control de acceso.
 
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log\*
+## Tecnologías Utilizadas
 
-# Variables de entorno
+-   Node.js
+-   Express.js
+-   MongoDB + Mongoose
+-   TypeScript
+-   JWT (jsonwebtoken)
+-   argon2
+-   dotenv
 
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+## Estructura del Proyecto
 
-# Logs
+    src/
+     ├── core/
+     │    ├── database.ts
+     │    ├── middlewares/
+     │    │       ├── authMiddleware.ts
+     │    │       ├── requirePermission.ts
+     │    │       ├── canModifyUser.ts
+     │    │       └── canDisableUser.ts
+     │
+     ├── modules/
+     │    ├── user/
+     │    ├── book/
+     │    ├── borrow/
+     │    ├── permissions/
+     │
+     ├── app.ts
+     └── server.ts
 
-logs/
-_.log
-logs/_.log
+## Sistema de Permisos
 
-# Base de datos (si usas SQLite en test)
+Debe crearse inicialmente la siguiente lista de permisos:
 
-_.sqlite
-_.sqlite3
+### Permisos de Gestión de Libros
 
-# Cobertura de tests
+1.  CREAR_LIBRO
+2.  MODIFICAR_LIBRO
+3.  INHABILITAR_LIBRO
 
-coverage/
+### Permisos de Gestión de Usuarios
 
-# Outputs de build
+4.  MODIFICAR_USUARIO (no necesario para modificarse a sí mismo)
+5.  INHABILITAR_USUARIO (no necesario para inhabilitarse a sí mismo)
+6.  GESTIONAR_PERMISOS
 
-dist/
-build/
+## Middlewares principales
 
-# Sistema operativo / Editor
+-   authMiddleware
+-   requirePermission()
+-   canModifyUser
+-   canDisableUser
 
-.DS_Store
-Thumbs.db
+## Variables de entorno
 
-# Compilados de Sequelize CLI
+    MONGO_URI=...
+    JWT_SECRET=...
+    JWT_EXPIRES_IN=1d
+    PORT=8080
 
-sequelize-meta.json
+## Ejecución
 
-# Archivos temporales
-
-_.tmp
-_.swp
-\*.swo
-
-# IDEs
-
-.vscode/
-.idea/
+    npm install
+    npm run dev
