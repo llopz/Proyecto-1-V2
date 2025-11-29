@@ -17,15 +17,66 @@ asignación de permisos y control de acceso.
 
 ## Estructura del Proyecto
 
-    core/
-     │── database.ts
-    src/
-     |
-     │── user/
-     │── book/
-     │── borrow/
-     │── security/
-     └── server.ts
+Proyecto-1-V2/
+│
+├── core/
+│ └── database.ts # Configuración de MongoDB
+│
+├── src/
+│ ├── user/ # Módulo de usuarios
+│ │ ├── actions/
+│ │ │ ├── create.user.action.ts
+│ │ │ ├── read.user.action.ts  
+│ │ │ ├── update.user.action.ts  
+│ │ │ └── delete.user.action.ts  
+│ │ ├── user.model.ts  
+│ │ ├── user.controller.ts  
+│ │ └── user.routes.ts  
+│ │
+│ ├── book/ # Módulo de libros
+│ │ ├── actions/
+│ │ │ ├── create.book.action.ts
+│ │ │ ├── read.book.action.ts
+│ │ │ ├── update.book.action.ts
+│ │ │ └── delete.book.action.ts
+│ │ ├── book.model.ts
+│ │ ├── book.controller.ts
+│ │ └── book.routes.ts
+│ │
+│ ├── borrow/ # Módulo de reservas
+│ │ ├── actions/
+│ │ │ ├── create.borrow.action.ts
+│ │ │ ├── read.borrow.action.ts
+│ │ │ └── update.borrow.action.ts
+│ │ ├── borrow.model.ts
+│ │ ├── borrow.controller.ts
+│ │ └── borrow.routes.ts
+│ │
+│ ├── security/ # Módulo de seguridad y autenticación
+│ │ ├── auth/
+│ │ │ ├── auth.action.ts
+│ │ │ ├── auth.controller.ts
+│ │ │ └── auth.routes.ts
+│ │ │
+│ │ ├── middlewares/ # Middlewares de autorización
+│ │ │ ├── canDisableUser.ts
+│ │ │ ├── canModifyUser.ts
+│ │ │ ├── requireAuth.ts
+│ │ │ └── requirePermission.ts
+│ │ │
+│ │ └── permission/ # Gestión de permisos
+│ │ ├── permission.action.ts
+│ │ ├── permission.controller.ts
+│ │ ├── permission.model.ts
+│ │ └── permission.routes.ts
+│ │
+│ └── server.ts # Punto de entrada de la aplicación
+│
+├── .env # Variables de entorno (no subir a Git)
+├── .gitignore
+├── package.json
+├── tsconfig.json
+└── README.md
 
 ## Sistema de Permisos
 
