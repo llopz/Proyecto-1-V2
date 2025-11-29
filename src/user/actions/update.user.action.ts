@@ -12,9 +12,9 @@ async function updateUserAction(
 }
 
 async function assignPermissionAction(userId: string, permissionName: string) {
-  // Buscar permiso por nombre
   const permission = await PermissionModel.findOne({ name: permissionName });
-  if (!permission) throw new Error("Permiso no encontrado");
+  if (!permission)
+    throw new Error("Permiso" + permissionName + " no encontrado");
 
   return await UserModel.findByIdAndUpdate(
     userId,

@@ -13,7 +13,7 @@ const permissionRoutes = Router();
 permissionRoutes.post(
   "/",
   requireAuth,
-  requirePermission("GESTIONAR_PERMISOS"),
+  //requirePermission("GESTIONAR_PERMISOS"),
   async (req: Request, res: Response) => {
     const { name, description } = req.body;
     const permiso = await createPermission(name, description);

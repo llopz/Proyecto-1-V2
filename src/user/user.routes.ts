@@ -52,8 +52,10 @@ userRoutes.put(
   requireAuth,
   requirePermission("GESTIONAR_PERMISOS"),
   async (req: Request, res: Response) => {
-    const { permission } = req.body;
-    const updated = await assignPermission(req.params.id, permission);
+    const updated = await assignPermission(
+      req.params.id,
+      req.body.permissionName
+    );
     res.status(200).json(updated);
   }
 );
@@ -64,8 +66,10 @@ userRoutes.put(
   requireAuth,
   requirePermission("GESTIONAR_PERMISOS"),
   async (req: Request, res: Response) => {
-    const { permission } = req.body;
-    const updated = await removePermission(req.params.id, permission);
+    const updated = await removePermission(
+      req.params.id,
+      req.body.permissionName
+    );
     res.status(200).json(updated);
   }
 );

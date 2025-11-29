@@ -27,7 +27,7 @@ async function deleteUserController(id: string) {
   return await deleteUserAction(id);
 }
 
-async function assignPermission(id: string, permission: string) {
+async function assignPermission(id: string, permission: any) {
   return await assignPermissionAction(id, permission);
 }
 
